@@ -1,5 +1,6 @@
 $( document ).ready(function(){
   $("body").on("click", ".mark-as-read", markAsRead)
+  // $("body").on("click", ".mark-as-unread", markAsUnRead)
 })
 
 function markAsRead(e) {
@@ -26,14 +27,28 @@ function markAsRead(e) {
       console.log(error);
     }
   });
-
 }
+
+
+// function markAsUnRead(e) {
+//   e.preventDefault();
+//   var $link = $(this).parents('.link');
+//   var linkId = $link.data('link-id');
+//   var url = $link.data('link-url');
+//
+//   $.ajax({
+//     type: "PATCH",
+//     url: "/api/v1/links/" + linkId,
+//     data: { read: false },
+//   }).then(console.log("yay"));
+// }
 
 function updateStatus(link) {
   $(`.link[data-link-id=${link}]`).find(".read-status").html("Read Status: true");
+  $(`.link[data-link-id=${link}]`).css("background-color", "grey")
   updateButton(link);
 }
 
 function updateButton(link) {
-  $(`.link[data-link-id=${link}]`).find(".mark-as-read").html('<button>Mark as Unread</button>');
+  $(`.link[data-link-id=${link}]`).find(".mark-as-read").html('<button class="disabled">Already read</button>');
 }
