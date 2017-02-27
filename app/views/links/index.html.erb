@@ -9,6 +9,13 @@
   <input type="submit" value="Add Link">
 </form>
 
+<input type="text" id="filter-links-text" onkeyup="filterText()" placeholder="Search for links">
+
+<select>
+ <option value="unread">unread</option>
+ <option value="read">read</option>
+</select>
+
 <div id="links-list">
     <% @links.each do |link| %>
     <div class="link" data-link-id="<%= link.id %>" data-link-url="<%= link.url %>">
