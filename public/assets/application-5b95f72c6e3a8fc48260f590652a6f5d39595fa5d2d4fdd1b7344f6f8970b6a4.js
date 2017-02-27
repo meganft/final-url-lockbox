@@ -33285,19 +33285,6 @@ function markAsRead(e) {
     url: "/api/v1/links/" + linkId,
     data: { read: true },
   }).then(updateStatus);
-
-  $.ajax({
-     type: "POST",
-     url: "https://hot-reads-final.herokuapp.com/api/v1/reads",
-     data: {link: url},
-     success: function(){
-        alert("Marked as Read on Hot Reads");
-       },
-      error: function(){
-        console.log();
-      }
-   });
-
 }
 
 function updateStatus(link) {
