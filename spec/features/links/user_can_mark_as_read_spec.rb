@@ -12,7 +12,7 @@ describe "A logged in user visits links index page" do
     expect(link.read).to eq(false)
   end
 
-  it "and they can mark this link as read" do
+  xit "and they can mark this link as read" do
     user = User.create(email: "megan@example.com", password: "password")
     link = user.links.create(url: "https://turing.io", title: "Turing Website")
 
@@ -33,7 +33,6 @@ describe "A logged in user visits links index page" do
     within('.link .read-status') do
       expect(page).to have_text("true")
     end
-
 
     expect(link.read).to eq(true)
   end
