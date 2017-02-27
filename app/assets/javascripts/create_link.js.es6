@@ -54,5 +54,6 @@ function clearLink() {
 }
 
 function displayFailure(failureData){
-  console.log("FAILED attempt to create new Link: " + failureData.responseText);
+  $('.flash_wrapper').html("<%= escape_javascript(render 'layouts/messages') %>");
+  alert("FAILED attempt to create new Link: " + failureData.responseText);
 }

@@ -7,13 +7,13 @@ describe "A logged in user visits links index page" do
 
     visit links_path
 
-    within(:css, ".new-link-form") do
-      fill_in "title", with: "New title for a link"
-      fill_in "url", with: "https://www.google.com"
-      click_on "Submit Link"
+    within(:css, "#new-link-form") do
+      fill_in "link-title", with: "New title for a link"
+      fill_in "link-url", with: "https://www.google.com"
+      click_on "Add Link"
     end
 
-    within(:css, ".links-index") do
+    within(:css, "#links-list") do
       expect(page).to have_content("https://www.google.com")
       expect(page).to have_content("New title for a link")
     end
@@ -25,10 +25,10 @@ describe "A logged in user visits links index page" do
 
     visit links_path
 
-    within(:css, ".new-link-form") do
-      fill_in "title", with: "New title for a link"
-      fill_in "url", with: "www.bad.com"
-      click_on "Submit Link"
+    within(:css, "#new-link-form") do
+      fill_in "link-title", with: "New title for a link"
+      fill_in "link-url", with: "www.bad.com"
+      click_on "addresses Link"
     end
 
     expect(page).to have_content("Url is not a valid URL")
@@ -41,9 +41,9 @@ describe "A logged in user visits links index page" do
 
     visit links_path
 
-    within(:css, ".new-link-form") do
-      fill_in "url", with: "https://www.google.com"
-      click_on "Submit Link"
+    within(:css, "#new-link-form") do
+      fill_in "link-url", with: "https://www.google.com"
+      click_on "Add Link"
     end
 
     expect(page).to have_content("Title can't be blank")
@@ -56,9 +56,9 @@ describe "A logged in user visits links index page" do
 
     visit links_path
 
-    within(:css, ".new-link-form") do
-      fill_in "title", with: "New title for a link"
-      click_on "Submit Link"
+    within(:css, "#new-link-form") do
+      fill_in "link-title", with: "New title for a link"
+      click_on "Add Link"
     end
 
     expect(page).to have_content("Url can't be blank")

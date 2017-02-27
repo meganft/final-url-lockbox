@@ -4,6 +4,7 @@ class LinksController < ApplicationController
 
   def index
     @links = Link.where(user_id: current_user.id).reverse
+    @hot_links = current_user.links.hot
   end
 
   def create
@@ -12,7 +13,7 @@ class LinksController < ApplicationController
       flash[:success] = "Successfully created a link"
       redirect_to links_path
     else
-      flash[:danger] = @link.errors.full_messages.first
+      format.js { flash.now[:danger] = @link.errors.full_messages.first }
       redirect_to links_path
     end
   end

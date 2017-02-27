@@ -1,30 +1,6 @@
-<div class="links-index">
-<% @links.each do |link| %>
-<div class="link" data-link-id="<%= link.id %>" data-link-url="<%= link.url %>">
-  <h5>Title: <%= link.title %></h5>
-  <p>URL: <%= link.url %></p>
-  <p><span class="read-status">Read status: <%= link.read %></span>
-    <span class="mark-as-read"><button type="button">Mark as Read</button></span></p>
-    <p> <%= link_to "Edit this Link", edit_link_path(link) %>
-</div>
-<% end %>
-</div>
-
-<h5>Make a new link:</h5>
-<div class="new-link-form">
-<%= form_tag links_path, :method => :post do %>
-<%= label_tag :url %> <%= text_field_tag :url %></p>
-<%= label_tag :title %> <%= text_field_tag :title %>
-
-<%= submit_tag "Submit Link" %>
-<% end %>
-</div>
-
-
-
 
 Nate's code from here down:
-<form id="new-link">
+<form id="new-link-form">
   <label>URL:
     <input id="link-url">
   </label>
@@ -34,16 +10,32 @@ Nate's code from here down:
   <input type="submit" value="Add Link">
 </form>
 
-<div id="links-list"></div>
 
-<br>
+<div id="links-list">
+    <% @links.each do |link| %>
+    <div class="link" data-link-id="<%= link.id %>" data-link-url="<%= link.url %>">
+      <p class='link-title'><%= link.title %></p>
+      <p class='link-url'> <%=link_to link.url, link.url %></p>
+
+      <p class="link_read">
+         <%= link.read %>
+      </p>
+      <p class="link_buttons">
+        <button class="mark-as-read">Mark as Read</button>
+        <%= link_to "Edit", edit_link_path(link), class:"button" %>
+        <button class='delete-link'>Delete</button>
+      </p>
+    </div>
+    <% end %>
+</div>
+
 
 <h2>Hot Reads!</h2>
 <ol id="hot-reads">
-<%# @hot_links.each do |read| %>
+<% @hot_links.each do |read| %>
   <li class='hot-read'>
-    <a href="<%#= read.url %>"><%#= read.url %></a>
+    <a href="<%= read.url %>"><%= read.url %></a>
   </li>
-<%# end %>
+<% end %>
 </ol>
 <img src="http://i.giphy.com/Wj2Qm3eaW1gGY.gif">
