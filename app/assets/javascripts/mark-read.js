@@ -14,6 +14,7 @@ function markAsRead(e) {
     data: { read: true },
   }).then(updateStatus(linkId));
 
+
   $.ajax({
    type: "POST",
    url: "http://hot-reads-final.herokuapp.com/api/v1/reads",
