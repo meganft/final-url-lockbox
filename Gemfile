@@ -20,7 +20,6 @@ gem 'sprockets-es6'
 gem 'rb-readline'
 gem "validate_url"
 
-
 # gem 'unicorn'
 
 # gem 'capistrano-rails', group: :development
