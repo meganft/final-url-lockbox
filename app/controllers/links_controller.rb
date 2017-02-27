@@ -4,7 +4,7 @@ class LinksController < ApplicationController
 
   def index
     @hot_links = current_user.links.hot
-    @links = Link.where(user_id: current_user.id)
+    @links = Link.where(user_id: current_user.id).reverse
   end
 
   def edit
@@ -24,7 +24,7 @@ class LinksController < ApplicationController
   end
 
   def destroy
-    
+
   end
 
   def authorize
