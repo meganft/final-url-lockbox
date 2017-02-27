@@ -7,7 +7,7 @@ describe "A logged in user visits links index page" do
 
     visit links_path
 
-    within(:css, "#new-link-form") do
+    within(:css, "#new-link") do
       fill_in "link-title", with: "New title for a link"
       fill_in "link-url", with: "https://www.google.com"
       click_on "Add Link"
@@ -25,10 +25,10 @@ describe "A logged in user visits links index page" do
 
     visit links_path
 
-    within(:css, "#new-link-form") do
+    within(:css, "#new-link") do
       fill_in "link-title", with: "New title for a link"
       fill_in "link-url", with: "www.bad.com"
-      click_on "addresses Link"
+      click_on "Add Link"
     end
 
     expect(page).to have_content("Url is not a valid URL")
@@ -41,7 +41,7 @@ describe "A logged in user visits links index page" do
 
     visit links_path
 
-    within(:css, "#new-link-form") do
+    within(:css, "#new-link") do
       fill_in "link-url", with: "https://www.google.com"
       click_on "Add Link"
     end
@@ -56,7 +56,7 @@ describe "A logged in user visits links index page" do
 
     visit links_path
 
-    within(:css, "#new-link-form") do
+    within(:css, "#new-link") do
       fill_in "link-title", with: "New title for a link"
       click_on "Add Link"
     end
