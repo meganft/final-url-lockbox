@@ -3,7 +3,7 @@ class LinksController < ApplicationController
   before_action :authorize
 
   def index
-    @links = Link.where(user_id: current_user.id)
+    @links = Link.where(user_id: current_user.id).reverse
   end
 
   def create

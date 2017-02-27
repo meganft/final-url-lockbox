@@ -8,13 +8,11 @@ function markAsRead(e) {
   var linkId = $link.data('link-id');
   var url = $link.data('link-url');
 
-  updateStatus(linkId);
-
   $.ajax({
     type: "PATCH",
     url: "/api/v1/links/" + linkId,
     data: { read: true },
-  }).then(console.log("yaya"));
+  }).then(updateStatus(linkId));
 
   $.ajax({
    type: "POST",
@@ -36,5 +34,5 @@ function updateStatus(link) {
 }
 
 function updateButton(link) {
-  $(`.link[data-link-id=${link}]`).find(".mark-as-read").html('Mark as Unread');
+  $(`.link[data-link-id=${link}]`).find(".mark-as-read").html('<button>Mark as Unread</button>');
 }
