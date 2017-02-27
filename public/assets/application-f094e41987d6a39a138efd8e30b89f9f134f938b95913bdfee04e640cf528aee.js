@@ -33284,11 +33284,30 @@ function markAsRead(e) {
     type: "PATCH",
     url: "/api/v1/links/" + linkId,
     data: { read: true },
-  }).then(updateStatus);
+  }).then(updateStatus(linkId));
+
+
+  $.ajax({
+   type: "POST",
+   url: "http://hot-reads-final.herokuapp.com/api/v1/reads",
+   data: {link: url},
+   success: function(){
+      alert("Marked as Read on Hot Reads");
+     },
+    error: function(error){
+      console.log(error);
+    }
+  });
+
 }
 
 function updateStatus(link) {
-  $(`.link[data-link-id=${link.id}]`).find(".read-status").text(link.read);
+  $(`.link[data-link-id=${link}]`).find(".read-status").html("Read Status: true");
+  updateButton(link);
+}
+
+function updateButton(link) {
+  $(`.link[data-link-id=${link}]`).find(".mark-as-read").html('<button>Mark as Unread</button>');
 }
 ;
 // This is a manifest file that'll be compiled into application.js, which will include all the files
