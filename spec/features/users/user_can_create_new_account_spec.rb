@@ -59,4 +59,18 @@ describe "A user visits signup page" do
     expect(page).to have_content("Password confirmation doesn't match Password")
   end
 
+  it "and they cannot create an account without a unique email" do
+    user = User.create(email: "user@example.com", password: "user")
+
+    visit new_user_path
+
+    fill_in "user[email]", with: "user@example.com"
+    fill_in "user[password]", with: "password"
+    fill_in "user[password_confirmation]", with: "password"
+
+    click_on "Create An Account!"
+
+    expect(page).to have_content("Email has already been taken")
+  end
+
 end
