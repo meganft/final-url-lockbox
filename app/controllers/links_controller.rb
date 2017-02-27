@@ -3,8 +3,8 @@ class LinksController < ApplicationController
   before_action :authorize
 
   def index
-    @links = Link.where(user_id: current_user.id)
     @hot_links = current_user.links.hot
+    @links = Link.where(user_id: current_user.id)
   end
 
   def edit
@@ -23,10 +23,9 @@ class LinksController < ApplicationController
    end
   end
 
-  #
-  # def index
-  #    @hot_links = Link.hot
-  # end
+  def destroy
+    
+  end
 
   def authorize
    redirect_to login_path unless current_user

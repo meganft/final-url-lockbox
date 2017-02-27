@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: "links#index"
 
-  resources :links, only: [:index, :create, :edit, :update]
+  resources :links, only: [:index, :edit, :update, :destroy]
 
   resources :users, only: [:new, :create]
 
