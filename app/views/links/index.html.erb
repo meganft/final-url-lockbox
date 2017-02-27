@@ -4,11 +4,7 @@
   <h5>Title: <%= link.title %></h5>
   <p>URL: <%= link.url %></p>
   <p><span class="read-status">Read status: <%= link.read %></span>
-    <% if link.read == false %>
     <span class="mark-as-read"><button type="button">Mark as Read</button></span></p>
-    <% else  %>
-    <span class="mark-as-read"><button type="button" disabled>Already Read</button></span></p>
-    <% end %>
     <p> <%= link_to "Edit this Link", edit_link_path(link) %>
 </div>
 <% end %>
