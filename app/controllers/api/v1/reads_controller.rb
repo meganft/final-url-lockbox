@@ -1,8 +1,9 @@
 class Api::V1::ReadsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
 
   def update
-    binding.pry
-    @read = Read.find params[:id]
+puts params.inspect
+ @read = Read.find params[:id]
 
     # @link.assign_attributes link_params
     # just_read = @link.read_changed? && @link.read
