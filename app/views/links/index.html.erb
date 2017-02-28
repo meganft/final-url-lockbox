@@ -10,11 +10,10 @@
 </form>
 
 <input type="text" id="filter-links-text" onkeyup="filterText()" placeholder="Search for links">
+<button type="button" id="filter-by-unread" name="filter-unread">Filter By Unread</button>
+<button type="button" id="filter-by-read" name="filter-read">Filter By Read</button>
+<button type="button" id="show-all" name="show-all">Show All links</button>
 
-<select>
- <option value="unread">unread</option>
- <option value="read">read</option>
-</select>
 
 <div id="links-list">
     <% @links.each do |link| %>
