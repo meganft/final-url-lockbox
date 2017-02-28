@@ -13,3 +13,12 @@
 
 
  */
+/* line 18, /Users/megantalbot/turing/4module/final-assessment/final-url-lockbox/app/assets/stylesheets/application.css.scss */
+.marked-read {
+  background-color: grey;
+}
+
+/* line 22, /Users/megantalbot/turing/4module/final-assessment/final-url-lockbox/app/assets/stylesheets/application.css.scss */
+.link {
+  width: 40%;
+}

@@ -33241,7 +33241,7 @@ function createLink(event) {
   console.log("win");
 
   var link = getLinkData();
-
+  $("#notice").html('');
   $.post("/api/v1/links", link).then(renderLink).fail(displayFailure);
 }
 
@@ -33253,7 +33253,7 @@ function getLinkData() {
 }
 
 function renderLink(link) {
-  $("#links-list").append(linkHTML(link));
+  $("#links-list").prepend(linkHTML(link));
   // clearLink();
 }
 
@@ -33268,10 +33268,68 @@ function clearLink() {
 }
 
 function displayFailure(failureData) {
+  $(".notice").html(failureData.responseText);
   console.log("FAILED attempt to create new Link: " + failureData.responseText);
 };
+$(document).ready(function(){
+  $('#filter-by-read').on('click', filterByRead)
+  $('#filter-by-unread').on('click', filterByUnread)
+  $('#filter-links-text').on('keyup', filterText)
+  $('#show-all').on('click', showAllLinks)
+})
+
+function filterText(e) {
+  e.preventDefault();
+  var filter = $( "#filter-links-text" ).val().toLowerCase();
+  $("#links-list").children().each(function(){
+
+    var title = $(this).find('.link-title').text();
+    var url = $(this).find('.link-url').text();
+
+    if (title.includes(filter) || url.includes(filter)) {
+      $(this).show()
+    } else {
+      $(this).hide()
+    };
+  });
+}
+
+function filterByUnread() {
+  var read = "Read? false";
+  $('#links-list').children().each(function() {
+    var status = $(this).find(".read-status").html();
+    if (status.includes(read)) {
+      $(this).show()
+    } else {
+      $(this).hide()
+    };
+  });
+}
+
+function filterByRead() {
+  var read = "Read? true";
+  $('#links-list').children().each(function() {
+    var status = $(this).find(".read-status").html();
+    if (status.includes(read)) {
+      $(this).show()
+    } else {
+      $(this).hide()
+    };
+  });
+}
+
+function showAllLinks() {
+  var read = "Read? true";
+  $('#links-list').children().each(function() {
+
+      $(this).show();
+
+  });
+}
+;
 $( document ).ready(function(){
   $("body").on("click", ".mark-as-read", markAsRead)
+  $("body").on("click", ".mark-as-unread", markAsUnRead)
 })
 
 function markAsRead(e) {
@@ -33286,7 +33344,6 @@ function markAsRead(e) {
     data: { read: true },
   }).then(updateStatus(linkId));
 
-
   $.ajax({
    type: "POST",
    url: "http://hot-reads-final.herokuapp.com/api/v1/reads",
@@ -33298,16 +33355,37 @@ function markAsRead(e) {
       console.log(error);
     }
   });
+}
 
+function markAsUnRead(e) {
+  e.preventDefault();
+  var $link = $(this).parents('.link');
+  var linkId = $link.data('link-id');
+  var url = $link.data('link-url');
+
+  $.ajax({
+    type: "PATCH",
+    url: "/api/v1/links/" + linkId,
+    data: { read: false },
+  }).then(updateReadButton(linkId));
 }
 
 function updateStatus(link) {
-  $(`.link[data-link-id=${link}]`).find(".read-status").html("Read Status: true");
+  $(`.link[data-link-id=${link}]`).addClass("marked-read");
+  $(`.link[data-link-id=${link}]`).find(".read-status").html("Read? true");
   updateButton(link);
 }
 
 function updateButton(link) {
-  $(`.link[data-link-id=${link}]`).find(".mark-as-read").html('<button>Mark as Unread</button>');
+  $(`.link[data-link-id=${link}]`).find(".mark-as-read").remove();
+  $(`.link[data-link-id=${link}]`).append('<button class="mark-as-unread">Mark as Unread</button>');
+}
+
+function updateReadButton(link) {
+  $(`.link[data-link-id=${link}]`).find(".read-status").html("Read? false");
+  $(`.link[data-link-id=${link}]`).removeClass("marked-read");
+  $(`.link[data-link-id=${link}]`).find(".mark-as-unread").remove();
+  $(`.link[data-link-id=${link}]`).append('<button class="mark-as-read">Mark as Read</button>');
 }
 ;
 // This is a manifest file that'll be compiled into application.js, which will include all the files
