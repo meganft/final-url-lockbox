@@ -12,7 +12,7 @@ describe "A logged in user visits links index page" do
     expect(link.read).to eq(false)
   end
 
-  xit "and they can mark this link as read" do
+  it "and they can mark this link as read", :js => :true  do
     user = User.create(email: "megan@example.com", password: "password")
     link = user.links.create(url: "https://turing.io", title: "Turing Website")
 
@@ -24,9 +24,7 @@ describe "A logged in user visits links index page" do
       expect(page).to have_text("false")
     end
 
-    within('.link .mark-as-read') do
-      click_button "Mark as Read"
-    end
+    click_button "Mark as Read"
 
     visit links_path
 

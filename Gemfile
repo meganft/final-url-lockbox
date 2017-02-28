@@ -21,6 +21,8 @@ gem 'rb-readline'
 gem "validate_url"
 gem 'rack-cors', :require => 'rack/cors'
 gem 'pry'
+gem 'poltergeist'
+
 
 # gem 'unicorn'
 
