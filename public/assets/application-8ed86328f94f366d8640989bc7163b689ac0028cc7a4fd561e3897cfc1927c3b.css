@@ -22,3 +22,8 @@
 .link {
   width: 40%;
 }
+
+/* line 26, /Users/megantalbot/turing/4module/final-assessment/final-url-lockbox/app/assets/stylesheets/application.css.scss */
+.error {
+  color: red;
+}
