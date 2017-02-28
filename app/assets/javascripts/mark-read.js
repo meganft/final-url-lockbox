@@ -1,6 +1,8 @@
 $( document ).ready(function(){
   $("body").on("click", ".mark-as-read", markAsRead)
   $("body").on("click", ".mark-as-unread", markAsUnRead)
+  $("body").on("load", getTopReads)
+
 })
 
 function markAsRead(e) {
@@ -39,6 +41,20 @@ function markAsUnRead(e) {
     url: "/api/v1/links/" + linkId,
     data: { read: false },
   }).then(updateReadButton(linkId));
+}
+
+function getTopReads(){
+  $.ajax({
+   type: "GET",
+   url: "http://hot-reads-final.herokuapp.com/api/v1/reads",
+
+   success: function(){
+      alert("hi");
+     },
+    error: function(error){
+      console.log(error);
+    }
+  });
 }
 
 function updateStatus(link) {
