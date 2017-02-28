@@ -14,6 +14,7 @@
 <button type="button" id="filter-by-read" name="filter-read">Filter By Read</button>
 <button type="button" id="show-all" name="show-all">Show All links</button>
 
+<div class="links-index-container">
 <div id="links-list">
     <% @links.each do |link| %>
     <div class="link" data-link-id="<%= link.id %>" data-link-url="<%= link.url %>">
@@ -37,7 +38,7 @@
   </div>
     <% end %>
 </div>
-
+</div>
 <h2>Hot Reads!</h2>
 <ol id="hot-reads">
 <% @hot_links.each do |read| %>

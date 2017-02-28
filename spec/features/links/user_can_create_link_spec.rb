@@ -13,6 +13,8 @@ describe "A logged in user visits links index page", :js => :true   do
       click_on "Add Link"
     end
 
+    visit links_path
+
     within(:css, "#links-list") do
       expect(page).to have_content("https://www.google.com")
       expect(page).to have_content("New title for a link")
@@ -31,9 +33,6 @@ describe "A logged in user visits links index page", :js => :true   do
       find_button("Add Link").trigger('click')
     end
 
-    # within(:css, ".message") do
-    #   expect(page).to have_content("Url is not a valid URL")
-    # end
     expect(page).to_not have_content("New title for a link")
   end
 
@@ -48,7 +47,6 @@ describe "A logged in user visits links index page", :js => :true   do
       click_on "Add Link"
     end
 
-    # expect(page).to have_content("Title can't be blank")
     expect(page).to_not have_content("https://www.google.com")
   end
 
@@ -63,7 +61,6 @@ describe "A logged in user visits links index page", :js => :true   do
       click_on "Add Link"
     end
 
-    # expect(page).to have_content("Url can't be blank")
     expect(page).to_not have_content("New title for a link")
   end
 end

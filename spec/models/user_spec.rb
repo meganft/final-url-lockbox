@@ -28,11 +28,12 @@ RSpec.describe User, type: :model do
         expect(user).to be_invalid
       end
     end
-  # end
-  # describe "relationships" do
-  #   it "has many links" do
-  #     user = User.create(name: "Bob", email: "yellow@yellow.com", password: "blue")
-  #     expect(user).to respond_to(:links)
-  #   end
+  end
+  
+  describe "relationships" do
+    it "has many links" do
+      user = User.create(email: "yellow@yellow.com", password: "blue")
+      expect(user).to respond_to(:links)
+    end
   end
 end
