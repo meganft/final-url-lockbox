@@ -70,11 +70,11 @@ function getTitles() {
   $('#links-list .link').each(function(){
     var thisUrl = $(this).children('.link-url').html()
     if ($.trim(thisUrl) == $.trim(hottest)) {
-      $(this).children('.link-type').html("<h3>TOP LINK</h3>")
+      $(this).children('.link-type').html("<h3>TOP LINK!</h3>")
     } else if ($.inArray($.trim(thisUrl), urls) == -1) {
-      $(this).children('.link-type').html("<h3>REGULAR LINK</h3>")
+      $(this).children('.link-type').html("<h3>Regular Link</h3>")
     } else {
-      $(this).children('.link-type').html("<h3>HOT LINK</h3>")
+      $(this).children('.link-type').html("<h3>HOT LINK!</h3>")
     }
   });
 }
