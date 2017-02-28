@@ -22,7 +22,7 @@ rspec
 ```
 
 To see it in production, click here:
-* [Hot Reads](http://url-lockbox-final.herokuapp.com/)
+* [Url LockBox](http://url-lockbox-final.herokuapp.com/)
 
 
 ## Info
