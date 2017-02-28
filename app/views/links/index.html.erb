@@ -18,8 +18,8 @@
     <% @links.each do |link| %>
     <div class="link" data-link-id="<%= link.id %>" data-link-url="<%= link.url %>">
         <h4 class="link-type"></h4>
-     <p class='link-title'> Title: <%= link.title %></p>
-      <p class='link-url'> URL: <%=link_to link.url, link.url %></p>
+      Title: <p class='link-title'><%= link.title %></p>
+      URL: <p class='link-url'> <%=link.url %></p>
       <p><%= link_to "Edit", edit_link_path(link), class:"button" %>
         <%= link_to "Delete" %></p>
         <div class="read-status">
