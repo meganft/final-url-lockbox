@@ -68,12 +68,12 @@ function getTitles() {
   var hottestUrl = urls[0];
   $('#links-list .link').each(function(){
     var thisUrl = $(this).children('.link-url').html();
-    if ($.trim(thisUrl) == $.trim(hottestUrl)) {
-      $(this).children('.link-type').html('<h3 class="top-link">TOP LINK!</h3>')
+    if (thisUrl == hottestUrl) {
+      $(this).children('.link-type').html('<h4 class="top-link">TOP LINK!</h4>')
     } else if ($.inArray($.trim(thisUrl), urls) == -1) {
-      $(this).children('.link-type').html("<h3>Regular Link</h3>")
+      $(this).children('.link-type').html("<h4>Regular Link</h4>")
     } else {
-      $(this).children('.link-type').html('<h3 class="hot-link">HOT LINK!</h3>')
+      $(this).children('.link-type').html('<h4 class="hot-link">HOT LINK!</h4>')
     }
   });
 }
