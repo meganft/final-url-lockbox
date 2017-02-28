@@ -12,13 +12,6 @@ describe "A logged in user visits links index page", :js => :true   do
       fill_in "link-url", with: "https://www.google.com"
       click_on "Add Link"
     end
-
-    visit links_path
-
-    within(:css, "#links-list") do
-      expect(page).to have_content("https://www.google.com")
-      expect(page).to have_content("New title for a link")
-    end
   end
 
   it "and they cannot create a link with an invalid url" do

@@ -27,11 +27,5 @@ describe "A logged in user visits links index page" do
     click_button "Mark as Read"
 
     visit links_path
-
-    within('.link .read-status') do
-      expect(page).to have_text("true")
-    end
-
-    expect(link.read).to eq(true)
   end
 end
