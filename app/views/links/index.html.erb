@@ -1,4 +1,6 @@
 <div class="message"></div>
+<h3>Make a New Link:</h3>
+<hr>
 <form id="new-link">
   <label>URL:
     <input id="link-url">
@@ -8,12 +10,15 @@
   </label>
   <input type="submit" value="Add Link">
 </form>
-
+<h3>Filter Links:</h3>
+<hr>
 <input type="text" id="filter-links-text" onkeyup="filterText()" placeholder="Search for links">
 <button type="button" id="filter-by-unread" name="filter-unread">Filter By Unread</button>
 <button type="button" id="filter-by-read" name="filter-read">Filter By Read</button>
 <button type="button" id="show-all" name="show-all">Show All links</button>
 
+<h3>Your links Index:</h3>
+<hr>
 <div class="links-index-container">
 <div id="links-list">
     <% @links.each do |link| %>
