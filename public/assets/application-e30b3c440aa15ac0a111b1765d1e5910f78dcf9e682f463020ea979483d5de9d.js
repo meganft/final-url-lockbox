@@ -33409,9 +33409,8 @@ function getTitles() {
   });
 }
 
-
 function updateStatus(link) {
-  $(`.link[data-link-id=${link}]`).addClass("marked-read");
+  $(`.link[data-link-id=${link}] .read-status`).addClass("marked-read");
   $(`.link[data-link-id=${link}]`).find(".read-status").html("Read? true");
   updateButton(link);
 }

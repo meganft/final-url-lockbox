@@ -20,7 +20,7 @@
 
 /* line 22, /Users/megantalbot/turing/4module/final-assessment/final-url-lockbox/app/assets/stylesheets/application.css.scss */
 .link {
-  width: 40%;
+  width: 100%;
 }
 
 /* line 26, /Users/megantalbot/turing/4module/final-assessment/final-url-lockbox/app/assets/stylesheets/application.css.scss */
@@ -36,4 +36,9 @@
 /* line 34, /Users/megantalbot/turing/4module/final-assessment/final-url-lockbox/app/assets/stylesheets/application.css.scss */
 .top-link {
   color: red;
+}
+
+/* line 37, /Users/megantalbot/turing/4module/final-assessment/final-url-lockbox/app/assets/stylesheets/application.css.scss */
+.links-class-container {
+  align-items: center;
 }
