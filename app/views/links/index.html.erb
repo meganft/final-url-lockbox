@@ -17,8 +17,8 @@
 <div id="links-list">
     <% @links.each do |link| %>
     <div class="link" data-link-id="<%= link.id %>" data-link-url="<%= link.url %>">
-      <div class="panel panel-default">
-     <p class='link-title'>Title: <%= link.title %></p>
+        <h4 class="link-type"></h4>
+     <p class='link-title'> Title: <%= link.title %></p>
       <p class='link-url'> URL: <%=link_to link.url, link.url %></p>
       <p><%= link_to "Edit", edit_link_path(link), class:"button" %>
         <%= link_to "Delete" %></p>
@@ -34,7 +34,6 @@
           </p>
           <% end %>
         </div>
-    </div>
   </div>
     <% end %>
 </div>

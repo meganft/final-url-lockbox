@@ -1,7 +1,18 @@
 $( document ).ready(function(){
+  $.ajax({
+   type: "GET",
+   url: "http://hot-reads-final.herokuapp.com/api/v1/reads",
+   success: function(data){
+     response = data;
+      findTopReads(data);
+     },
+    error: function(error){
+      console.log(error);
+    }
+  });
+
   $("body").on("click", ".mark-as-read", markAsRead)
   $("body").on("click", ".mark-as-unread", markAsUnRead)
-  $("body").on("load", getTopReads)
 
 })
 
@@ -43,19 +54,31 @@ function markAsUnRead(e) {
   }).then(updateReadButton(linkId));
 }
 
-function getTopReads(){
-  $.ajax({
-   type: "GET",
-   url: "http://hot-reads-final.herokuapp.com/api/v1/reads",
+function findTopReads(data){
+  hotReads = data;
+  getTitles();
+  console.log("find reads");
+}
 
-   success: function(){
-      alert("hi");
-     },
-    error: function(error){
-      console.log(error);
+function getTitles() {
+  var urls = [];
+  for (var i = 0; i < hotReads.length; i++) {
+    urls.push(hotReads[i].url)
+  }
+  var hottest = urls[0]
+
+  $('#links-list .link').each(function(){
+    var thisUrl = $(this).children('.link-url').html()
+    if ($.trim(thisUrl) == $.trim(hottest)) {
+      $(this).children('.link-type').html("<h3>TOP LINK</h3>")
+    } else if ($.inArray($.trim(thisUrl), urls) == -1) {
+      $(this).children('.link-type').html("<h3>REGULAR LINK</h3>")
+    } else {
+      $(this).children('.link-type').html("<h3>HOT LINK</h3>")
     }
   });
 }
+
 
 function updateStatus(link) {
   $(`.link[data-link-id=${link}]`).addClass("marked-read");
