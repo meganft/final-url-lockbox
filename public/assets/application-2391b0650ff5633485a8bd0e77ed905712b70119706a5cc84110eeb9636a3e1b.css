@@ -27,3 +27,13 @@
 .error {
   color: red;
 }
+
+/* line 30, /Users/megantalbot/turing/4module/final-assessment/final-url-lockbox/app/assets/stylesheets/application.css.scss */
+.hot-link {
+  color: orange;
+}
+
+/* line 34, /Users/megantalbot/turing/4module/final-assessment/final-url-lockbox/app/assets/stylesheets/application.css.scss */
+.top-link {
+  color: red;
+}
