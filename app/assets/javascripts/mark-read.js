@@ -1,10 +1,10 @@
 $( document ).ready(function(){
   $.ajax({
    type: "GET",
-   url: "http://hot-reads-final.herokuapp.com/api/v1/reads",
+   url: "http://localhost:3000/api/v1/reads",
    success: function(data){
      response = data;
-      findTopReads(data);
+      findHotReads(data);
      },
     error: function(error){
       console.log(error);
@@ -30,7 +30,7 @@ function markAsRead(e) {
 
   $.ajax({
    type: "POST",
-   url: "http://hot-reads-final.herokuapp.com/api/v1/reads",
+   url: "http://localhost:3000/api/v1/reads",
    data: {link: url},
    success: function(){
       alert("Marked as Read on Hot Reads");
@@ -54,13 +54,8 @@ function markAsUnRead(e) {
   }).then(updateReadButton(linkId));
 }
 
-function findTopReads(data){
+function findHotReads(data){
   hotReads = data;
-  getTitles();
-  console.log("find reads");
-}
-
-function getTitles() {
   var urls = [];
   for (var i = 0; i < hotReads.length; i++) {
     urls.push(hotReads[i].url)
@@ -68,12 +63,12 @@ function getTitles() {
   var hottestUrl = urls[0];
   $('#links-list .link').each(function(){
     var thisUrl = $(this).children('.link-url').html();
-    if (thisUrl == hottestUrl) {
-      $(this).children('.link-type').html('<h4 class="top-link">TOP LINK!</h4>')
-    } else if ($.inArray($.trim(thisUrl), urls) == -1) {
-      $(this).children('.link-type').html("<h4>Regular Link</h4>")
+    if (thisUrl) == hottestUrl)) {
+      $(this).children('.link-hot-color').html('<h4 class="top-link">This is the Top Link!</h4>')
+    } else if (inArray((thisUrl), urls)) {
+      $(this).children('.link-hot-color').html("<h4>Regular Link</h4>")
     } else {
-      $(this).children('.link-type').html('<h4 class="hot-link">HOT LINK!</h4>')
+      $(this).children('.link-hot-color').html('<h4 class="hot-link">This is a Hot Link!</h4>')
     }
   });
 }

@@ -24,7 +24,7 @@
 <div id="links-list">
     <% @links.each do |link| %>
     <div class="link" data-link-id="<%= link.id %>" data-link-url="<%= link.url %>">
-        <h4 class="link-type"></h4>
+        <h4 class="link-hot-color"></h4>
       Title: <p class='link-title'><%= link.title %></p>
       URL: <p class='link-url'> <%=link.url %></p>
       <p><%= link_to "Edit", edit_link_path(link), class:"button" %>
